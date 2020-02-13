@@ -27,11 +27,18 @@ class points():
         PC.channels = var.channels
         PC.points = var.points
 
+        """
+        Function to get the "3D" map
+        """
         for i in range((len(PC.points))):
 
             PC.points[i].z = PC.channels[0].values[i]/100   # write in the z axis of the points the values of the "intensity" divided by 100 to make it readable on rviz
 
         self.pub2.publish(PC)  # publish it into the new topic
+
+        """
+        Function to filtter the map and get only one point by degree
+        """
 
         index_max = PC.channels[0].values.index(max(PC.channels[0].values))
 
