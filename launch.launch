@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="rosbag" type="play" name="rosbag" output="screen" args="--loop $(find sonar_mapping)/rosbag/static_sonar.bag"/>
+    <node pkg="sonar_mapping" type="filtering.py" name="get_data" output="screen"/>
+
+</launch>
