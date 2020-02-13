@@ -15,8 +15,8 @@ from mpl_toolkits.mplot3d import Axes3D
 class points():
 
     def __init__(self):
-
-        self.pub = rospy.Publisher("/PointCloud",PointCloud,queue_size=1)               #Create a topic with the new PointCloud
+        self.pub1 = rospy.Publisher("/tritech_micron/filttered_scan",PointCloud,queue_size=1)               #Create a topic with the new PointCloud
+        self.pub2 = rospy.Publisher("/tritech_micron/scan_3D",PointCloud,queue_size=1)               #Create a topic with the new PointCloud
         self.sub = rospy.Subscriber("/tritech_micron/scan", PointCloud, self.get_data)  # Subscribs to the topcis to get the data
 
     def get_data(self,var):
@@ -31,7 +31,20 @@ class points():
 
             PC.points[i].z = PC.channels[0].values[i]/100   # write in the z axis of the points the values of the "intensity" divided by 100 to make it readable on rviz
 
-        self.pub.publish(PC)  # publish it into the new topic
+        self.pub2.publish(PC)  # publish it into the new topic
+
+        index_max = PC.channels[0].values.index(max(PC.channels[0].values))
+
+        for i in range(len(PC.points)): #396
+
+            if i != index_max:
+                PC.points[i].x = PC.points[i].y = PC.points[i].z = 0
+            else:
+                PC.points[i].z = 0
+
+        self.pub1.publish(PC)  # publish it into the new topic
+
+
 
 
 
