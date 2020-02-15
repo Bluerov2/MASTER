@@ -1,5 +1,8 @@
+<?xml version="1.0"?>
+
 <launch>
     <node pkg="rosbag" type="play" name="rosbag" output="screen" args="--loop $(find sonar_mapping)/rosbag/static_sonar.bag"/>
     <node pkg="sonar_mapping" type="filtering.py" name="get_data" output="screen"/>
-
+    <node pkg="sonar_mapping" type="pointcloudtolaserscan.py" name="convert_data" output="screen"/>
+    <node pkg="sonar_mapping" type="frame.py" name="sonar_fixed_frame" output="screen"/>
 </launch>
