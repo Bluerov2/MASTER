@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-
-    <include file="$(find uuv_gazebo_worlds)/launch/lake.launch"/>
-    <include file="$(find desistek_saga_gazebo)/launch/start_demo_teleop.launch"/>
-    <node pkg="sonar_mapping" type="sonar_simulation.py" name="sonar" output="screen"/>
-</launch>
