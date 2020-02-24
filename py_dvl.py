@@ -14,6 +14,22 @@ import os
 import csv
 import math
 
+
+
+##############
+##############
+# PARAMETERS #
+##############
+##############
+
+# Position of the DVL on the robot, where (0,0,0) is the center of gravity of the robot
+OFFSET_X = 0.0
+OFFSET_Y = 0.75
+OFFSET_Z = 0.0
+
+
+
+#########################################################################################################
 ##
 ## Lists where the datas from csv file will be saved
 ##
@@ -64,7 +80,7 @@ del robot_x[0]
 del robot_y[0]
 del robot_z[0]
 del robot_yaw[0]
-
+#########################################################################################################
 
 ##
 ## Convert the datas from dvl to an estimated trajectory
@@ -80,6 +96,8 @@ real_traj_x = []
 real_traj_y = []
 real_traj_z = []
 
+# We do the assumption that the robot turns only around the z axis.
+prevYaw = 0;
 
 for i in range(len(robot_timestamp)-1):
 	for j in range(len(dvl_timestamp)):
@@ -91,19 +109,23 @@ for i in range(len(robot_timestamp)-1):
 				estimated_traj_x.append(robot_x[i])
 				estimated_traj_y.append(robot_y[i])
 				estimated_traj_z.append(robot_z[i])
+				prevYaw = robot_yaw[i]
 			else:
 				time = dvl_timestamp[j]
 				dt = float(time - previous_time)
 				previous_time = time
-				estimated_traj_x.append(estimated_traj_x[-1] - dvl_x[j] * dt * math.cos(robot_yaw[i]) + dvl_y[j] * dt * math.sin(robot_yaw[i]) )
-				estimated_traj_y.append(estimated_traj_y[-1] - dvl_x[j] * dt * math.sin(robot_yaw[i]) - dvl_y[j] * dt * math.cos(robot_yaw[i]) )
+				X = dvl_x[j] - OFFSET_X*(robot_yaw[i]-prevYaw)/dt
+				Y = dvl_y[j] - OFFSET_Y*(robot_yaw[i]-prevYaw)/dt
+				prevYaw = robot_yaw[i]
+				estimated_traj_x.append(estimated_traj_x[-1] - X * dt * math.cos(robot_yaw[i]) + Y * dt * math.sin(robot_yaw[i]) )
+				estimated_traj_y.append(estimated_traj_y[-1] - X * dt * math.sin(robot_yaw[i]) - Y * dt * math.cos(robot_yaw[i]) )
 				estimated_traj_z.append(estimated_traj_z[-1] - dvl_z[j] * dt )
 
 			# Reduce the number of values for the real trajectory
 			real_traj_x.append(robot_x[i])
 			real_traj_y.append(robot_y[i])
 			real_traj_z.append(robot_z[i])
-
+#########################################################################################################
 
 ##
 ##	Plot the results
