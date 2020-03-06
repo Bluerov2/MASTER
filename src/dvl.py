@@ -44,8 +44,8 @@ class dvl:
 
 		self.dvlReceived = False
 
-		self.estimated_traj_x = -300
-		self.estimated_traj_y = 300
+		self.estimated_traj_x = 0
+		self.estimated_traj_y = 0
 		self.estimated_traj_z = 0
 
 	# The frequency of the DVL is lower than the IMU
@@ -56,9 +56,9 @@ class dvl:
 		self.dvlseq = msg.header.seq
 		self.dvlsecs = msg.header.stamp.secs+1
 		self.dvlnsecs = msg.header.stamp.nsecs
-		self.dvlX = msg.velocity.x
+		self.dvlX = msg.velocity.z 		############ /!\ ###########
 		self.dvlY = msg.velocity.y
-		self.dvlZ = msg.velocity.z
+		self.dvlZ = msg.velocity.x      ############ /!\ ###########
 
 		self.dvlReceived = True
 
