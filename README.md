@@ -74,6 +74,7 @@ for this run the following commands:
 
 ```
 $ roscd uuv_simulator
+$ cd ..
 $ cd uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf
 $ sudo gedit sonar_snippets.xacro
 ```
