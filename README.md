@@ -1,6 +1,6 @@
 # BlueRov2 SLAM
 
-**Related Packages**:
+## Related Packages
 
 * UUV-simulator:
 
@@ -38,7 +38,7 @@ cd ~/catkin_ws
 catkin_make
 ```
 
-**Installation**:
+## Installation
 
 ```
 cd ~/catkin_ws/src
@@ -46,3 +46,10 @@ git clone https://github.com/Bluerov2/MASTER.git
 cd ~/catkin_ws
 catkin_make # or <catkin build>, if you are using catkin_tools
 ```
+## List of Task
+
+- [x] UUV simulation senario
+- [x] IMU & DLV fused (/odom)
+- [x] 3D Mapping (octomap)
+- [x] 2D SLAM using Particle Filter
+- [ ] 3D SLAM using Particle Filter
