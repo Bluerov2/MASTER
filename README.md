@@ -1,5 +1,7 @@
 # BlueRov2 SLAM
 
+![Heriot Watt](https://www.google.co.uk/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHeriot-Watt_University&psig=AOvVaw27FTzzX9Y5zyaOmgmClZKh&ust=1584638885439000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDvhYHGpOgCFQAAAAAdAAAAABAD)
+
 ## Related Packages
 
 * UUV-simulator:
