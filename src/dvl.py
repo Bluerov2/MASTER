@@ -52,7 +52,7 @@ class dvl:
 	def dvl_sub(self,msg):
 
 		self.timeDVL = rospy.get_time()
-		
+
 		self.dvlseq = msg.header.seq
 		self.dvlsecs = msg.header.stamp.secs+1
 		self.dvlnsecs = msg.header.stamp.nsecs
@@ -81,17 +81,17 @@ class dvl:
 			self.angvelZ = msg.angular_velocity.z
 
 			self.estimateTraj()
-			
+
 
 	def estimateTraj(self):
 		dt = float(self.timeDVL - self.previous_time)
 		X = self.dvlX - self.OFFSET_X*(self.imuZ-self.lastImuZ)/dt
 		Y = self.dvlY - self.OFFSET_Y*(self.imuZ-self.lastImuZ)/dt
-		
+
 		self.estimated_traj_x = self.estimated_traj_x + (X * dt * math.cos(self.imuZ) - Y * dt * math.sin(self.imuZ))
 		self.estimated_traj_y = self.estimated_traj_y + (X * dt * math.sin(self.imuZ) + Y * dt * math.cos(self.imuZ))
 		self.estimated_traj_z = self.estimated_traj_z - self.dvlZ * dt
-		
+
 		self.previous_time = self.timeDVL
 		self.lastImuX = self.imuX
 		self.lastImuY = self.imuY

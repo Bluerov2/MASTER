@@ -28,8 +28,8 @@ def callback(arg):
 
 if __name__ == "__main__":
 
-    rospy.init_node("sonar")                                                        # initialization of the node
-    pub = rospy.Publisher("/own/simulated/sonar_LS", LaserScan, queue_size=1)       # initialization of the final publisher
+    rospy.init_node("sonar_dynamic")                                                        # initialization of the node
+    pub = rospy.Publisher("/own/simulated/dynamic/sonar_LS", LaserScan, queue_size=1)       # initialization of the final publisher
 
     while not rospy.is_shutdown():
 
@@ -48,9 +48,23 @@ if __name__ == "__main__":
 
                     laser_list.append(laser.ranges[i])# add another element to a list
 
+                    if len(laser_list) > 0 :
+
+                        for a in range(len(laser_list)-1):
+
+                            laser_list[a] = 0
+
                 else:
 
                     laser_list[i] = laser.ranges[i] # if the list is already filled just change de value
+
+
+                    for a in range(i-1):
+
+                        laser_list[a] = 0
+
+
+
 
 
                 laser_tuple = tuple(laser_list)# change list into a tuple
