@@ -1,10 +1,10 @@
 # BlueRov2 SLAM
 
-![Heriot Watt](https://github.com/Bluerov2/MASTER/blob/master/images/1200px-Heriot-Watt_University_logo.jpg)
+![Heriot Watt](https://github.com/Bluerov2/MASTER/blob/master/images/hh.jpg)
 
 The aim of this project is to provide a start of a 3D SLAM for underwater ROV. this project uses UUV simulation to fufill this objectif. The model is simulated using Deskitek Saga but you can use your own as well. we modified the sonar to be se same as the [Micron Sonar](https://www.tritech.co.uk/product/small-rov-mechanical-sector-scanning-sonar-tritech-micron) from Tritech.
 
-![sonar](https://github.com/Bluerov2/MASTER/blob/master/images/hh.jpg)
+![sonar]()
 
 
 
