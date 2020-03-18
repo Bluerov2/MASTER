@@ -20,7 +20,7 @@ The aim of this project is to provide a start of a 3D SLAM for underwater ROV. T
 
 * Octomap_server :
   
-  https://github.com/OctoMap/octomap
+  https://github.com/OctoMap/octomap_mapping.git
   
 * Desistek SAGA ROV vehicle:
 
@@ -42,7 +42,7 @@ To install every packages needed run the commands:
 ```
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/uuvsimulator/uuv_simulator
-$ git clone https://github.com/OctoMap/octomap
+$ git clone https://github.com/OctoMap/octomap_mapping.git
 $ git clone https://github.com/uuvsimulator/desistek_saga.git
 $ git clone https://github.com/pal-robotics-forks/point_cloud_converter.git
 $ git clone https://github.com/fada-catec/amcl3d.git
@@ -67,7 +67,7 @@ $ catkin_make # or <catkin build>, if you are using catkin_tools
 - [ ] 3D SLAM using Particle Filter
 
 
-## Mechanique Sonar
+## Mechanical Sonar
 
 you will need to change some URDF code from the ROV to allow a 360° vision.
 for this run the following commands:
