@@ -65,7 +65,7 @@ $ catkin_make # or <catkin build>, if you are using catkin_tools
 - [ ] 3D SLAM using Particle Filter
 
 
-## Mechanicle Sonar
+## Mechanique Sonar
 
 you will need to change some URDF code from the ROV to allow a 360° vision.
 for this run the following commands:
