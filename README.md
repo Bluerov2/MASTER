@@ -63,3 +63,39 @@ $ catkin_make # or <catkin build>, if you are using catkin_tools
 - [x] 3D Mapping (octomap)
 - [x] 2D SLAM using Particle Filter
 - [ ] 3D SLAM using Particle Filter
+
+
+## Mechanicle Sonar
+
+you will need to change some URDF code from the ROV to allow a 360° vision.
+for this run the following commands:
+
+```
+$ roscd uuv_simulator/uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf
+$ sudo gedit sonar_snippets.xacro
+```
+and change the forward_multibeam_p900 with this new values
+
+<xacro:macro name="forward_multibeam_p900" params="namespace parent_link *origin">
+    <xacro:multibeam_sonar
+      namespace="${namespace}"
+      suffix=""
+      parent_link="${parent_link}"
+      topic="sonar"
+      mass="0.02"
+      update_rate="15"
+      samples="200"
+      fov="6.0"
+      range_min="0.3"
+      range_max="75"
+      range_stddev="0.027"
+      mesh="">
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
+      <xacro:insert_block name="origin" />
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/p900.dae" scale="1 1 1"/>
+        </geometry>
+      </visual>
+    </xacro:multibeam_sonar>
+  </xacro:macro>
