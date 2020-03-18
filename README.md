@@ -73,7 +73,8 @@ you will need to change some URDF code from the ROV to allow a 360° vision.
 for this run the following commands:
 
 ```
-$ roscd uuv_simulator/uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf
+$ roscd uuv_simulator
+$ cd uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf
 $ sudo gedit sonar_snippets.xacro
 ```
 and change the forward_multibeam_p900 with those new values. This will al
