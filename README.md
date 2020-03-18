@@ -78,7 +78,7 @@ $ cd ..
 $ cd uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf
 $ sudo gedit sonar_snippets.xacro
 ```
-and change the forward_multibeam_p900 with those new values. This will al
+and change the forward_multibeam_p900 with those new values.
 ```
 <xacro:macro name="forward_multibeam_p900" params="namespace parent_link *origin">
     <xacro:multibeam_sonar
