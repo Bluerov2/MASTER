@@ -105,3 +105,17 @@ and change the forward_multibeam_p900 with those new values.
   </xacro:macro>
 ```
 ![sonar2](https://github.com/Bluerov2/MASTER/blob/master/images/9e9dd76fd4f547150d948ba49b7f92b3_74108.jpeg)
+
+## Launch
+
+To launch the Simulation using UUV simulation, playground and robotmodel:
+
+```
+$ roslaunch sonar_mapping sim.launch
+```
+
+To launch a rosbag of the real sonar in a squared tank :
+
+```
+$ roslaunch sonar_mapping bag.launch
+```
