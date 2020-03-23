@@ -114,7 +114,7 @@ To launch the Simulation using UUV simulation, playground and robotmodel:
 $ roslaunch sonar_mapping sim.launch
 ```
 
-To launch a rosbag of the real sonar in a squared tank :
+To launch a rosbag of the real sonar in a square tank :
 
 ```
 $ roslaunch sonar_mapping bag.launch
