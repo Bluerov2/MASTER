@@ -106,6 +106,21 @@ and change the forward_multibeam_p900 with those new values.
 ```
 ![sonar2](https://github.com/Bluerov2/MASTER/blob/master/images/9e9dd76fd4f547150d948ba49b7f92b3_74108.jpeg)
 
+## Ocotomap launching
+
+before launching anything you will have to do some modification:
+We call ocotmap server 50 seconds after the beginning of the simulation. we are doing this because for some reason
+the first 360 value of the sonar are drifted. Therefore, we launch a python file that will wait for 50 seconds before launching octomap.launch. but to achived this we will have to change the path of the file:
+
+```unix
+$ roscd sonar_mapping
+$ cd src
+$ sudo gedit octomap_launch.py
+```
+change the path:
+
+>"/home/tim/bluerov_ws/src/sonar_mapping/launch/octomap.launch"
+
 ## Launch
 
 To launch the Simulation using UUV simulation, playground and robotmodel:
