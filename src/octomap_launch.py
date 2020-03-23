@@ -5,7 +5,7 @@ import roslaunch
 import rospy
 
 
-rospy.sleep(75)
+rospy.sleep(80)
 rospy.init_node('en_Mapping', anonymous=True)
 uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
 roslaunch.configure_logging(uuid)
