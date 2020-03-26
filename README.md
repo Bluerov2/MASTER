@@ -66,6 +66,26 @@ $ catkin_make # or <catkin build>, if you are using catkin_tools
 - [x] 2D SLAM using Particle Filter
 - [ ] 3D SLAM using Particle Filter
 
+## Add the DVL
+
+The original Robot doesn't have any DLV installed. Thus, we need to provide one :
+
+Run the following command:
+```
+$ roscd desistek_saga_description/urdf/
+$ sudo gedit desistek_saga_sensors.xacro 
+```
+
+then add the following command:
+```xml
+<!-- DVL  -->
+<xacro:default_dvl_macro
+  namespace="${namespace}"
+  parent_link="${namespace}/base_link"
+  inertial_reference_frame="${inertial_reference_frame}">
+  <origin xyz="0 0 0" rpy="0 ${0.5*pi} 0"/>
+</xacro:default_dvl_macro>
+```
 
 ## Mechanical Sonar
 
