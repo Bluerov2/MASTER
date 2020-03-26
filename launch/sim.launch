@@ -13,7 +13,7 @@
       <arg name="yaw" value="90"/>
     </include>
 
-    <!-- launch AUV Joystick controler-->
+    <!-- launch AUV model-->
     <include file="$(find desistek_saga_control)/launch/start_cascaded_pid_with_teleop.launch">
         <arg name="joy_id" value="0"/>
     </include>
@@ -26,30 +26,6 @@
       <!-- launch conversion Laserscan - pointcloud2 -->
     <node pkg="sonar_mapping" type="laserscan_to_poincloud.py" name="laser_to_cloud" output="screen"/>
 
-
-      <!-- launch Octomap -->
-     <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
-
-        <param name="resolution" value="1.0" />
-
-        <!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
-        <param name="frame_id" type="string" value="world" />
-
-        <!-- maximum range to integrate (speedup!) -->
-        <param name="sensor_model/max_range" value="75.0" />
-
-        <!-- data source to integrate (PointCloud2) -->
-        <remap from="cloud_in" to="/own/simulated/dynamic/sonar_PC2" />
-    </node>
-
-
-
-    <node pkg="point_cloud_converter" name="point_cloud_converter" type="point_cloud_converter_node" >
-
-      <remap from="points2_in" to="/own/true/sonar_PC2"/>
-      <remap from="points_out" to="/own/true/sonar_PC" />
-
-    </node>
-
+    <node pkg="sonar_mapping" type="octomap_launch.py" name="en_Mapping" output="screen"/>
 
 </launch>
