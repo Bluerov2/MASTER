@@ -9,7 +9,7 @@ Input:	/desisek_saga/dvl
 Output:	/odom
 
 In __init__, set OFFSET_X, OFFSET_Y and OFFSET_Z equal to the distance in xyz between the DVL and the inertial center of the robot.
-
+	   , set STARTING_X, Y, Z equal to the xyz starting position of the robot, and STARTING_radianX, Y, Z equal to its orientation in radians
 """
 
 import rospy
