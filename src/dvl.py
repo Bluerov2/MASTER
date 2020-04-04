@@ -1,5 +1,17 @@
 #!/usr/bin/env python
 
+"""
+This program converts datas from DVL and IMU into the position of the robot.
+
+Input:	/desisek_saga/dvl 
+		/desistek_saga/imu
+
+Output:	/odom
+
+In __init__, set OFFSET_X, OFFSET_Y and OFFSET_Z equal to the distance in xyz between the DVL and the inertial center of the robot.
+
+"""
+
 import rospy
 from uuv_sensor_ros_plugins_msgs.msg import DVL
 from sensor_msgs.msg import Imu
@@ -24,8 +36,19 @@ class dvl:
 		self.dvlX = 0
 		self.dvlY = 0
 		self.dvlZ = 0
+		
+		####################### To be se correctly depending on the robot configuration ###################
 		self.OFFSET_X = 0
 		self.OFFSET_Y = 0
+		self.OFFSET_Z = 0
+
+		self.STARTING_X = -250
+		self.STARTING_Y = 300
+		self.STARTING_Z = -5
+		self.STARTING_radianX = 3.1415/4
+		self.STARTING_radianY = 0
+		self.STARTING_radianZ = 0
+		###################################################################################################
 
 		self.timeIMU = rospy.get_time()
 		self.quaternionX = 0
@@ -44,17 +67,16 @@ class dvl:
 
 		self.dvlReceived = False
 
-		self.estimated_traj_x = 0
-		self.estimated_traj_y = 0
-		self.estimated_traj_z = 0
+		self.estimated_traj_x = self.STARTING_X
+		self.estimated_traj_y = self.STARTING_Y
+		self.estimated_traj_z = self.STARTING_Z
 
 	# The frequency of the DVL is lower than the IMU
 	def dvl_sub(self,msg):
-
 		self.timeDVL = rospy.get_time()
 
 		self.dvlseq = msg.header.seq
-		self.dvlsecs = msg.header.stamp.secs+1
+		self.dvlsecs = msg.header.stamp.secs
 		self.dvlnsecs = msg.header.stamp.nsecs
 		self.dvlX = msg.velocity.z 		############ /!\ ###########
 		self.dvlY = msg.velocity.y
@@ -62,7 +84,7 @@ class dvl:
 
 		self.dvlReceived = True
 
-	# The frequency of the IMU is bigger than the DVL
+	# The frequency of the IMU is bigger than the DVL's
 	def imu_sub(self,msg):
 		if self.dvlReceived == True:
 			self.dvlReceived = False
@@ -91,22 +113,22 @@ class dvl:
 		self.estimated_traj_x = self.estimated_traj_x + (X * dt * math.cos(self.imuZ) - Y * dt * math.sin(self.imuZ))
 		self.estimated_traj_y = self.estimated_traj_y + (X * dt * math.sin(self.imuZ) + Y * dt * math.cos(self.imuZ))
 		self.estimated_traj_z = self.estimated_traj_z - self.dvlZ * dt
-
 		self.previous_time = self.timeDVL
-		self.lastImuX = self.imuX
-		self.lastImuY = self.imuY
-		self.lastImuZ = self.imuZ
+		self.lastImuX = self.imuX + self.STARTING_radianX
+		self.lastImuY = self.imuY + self.STARTING_radianY
+		self.lastImuZ = self.imuZ + self.STARTING_radianZ
 
 		self.convert_to_odom()
 
 	def convert_to_odom(self):
 		odm = Odometry()
 		odm.header.seq = self.dvlseq
-		odm.header.stamp.secs = self.dvlsecs
-		odm.header.stamp.nsecs = self.dvlnsecs
+		rostime = rospy.get_time()
+		odm.header.stamp.secs = int(rostime)
+		odm.header.stamp.nsecs = 1000000000*(rostime-int(rostime))
 
-		odm.header.frame_id = "desistek_saga/base_footprint"
-		#odm.child_frame_id = "desistek_saga/base_footprint"
+		odm.header.frame_id = "world"
+		#odm.child_frame_id = "desistek_saga/base_link"
 
 		odm.pose.pose.position.x = self.estimated_traj_x
 		odm.pose.pose.position.y = self.estimated_traj_y
