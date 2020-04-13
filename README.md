@@ -13,6 +13,9 @@ The aim of this project is to provide a start of a 3D SLAM for underwater ROV. T
 Mapping using UUV simulation - static:
 https://www.youtube.com/watch?v=EbcKPaRj7o8
 
+Mapping using Micron Sonar in a water tank:
+https://youtu.be/Wra3umj1Cps
+
 
 ## Related Packages
 
