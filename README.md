@@ -10,6 +10,8 @@ The aim of this project is to provide a start of a 3D SLAM for underwater ROV. T
 
 ![sonar](https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/Screenshot%20from%202020-03-02%2015-56-21.png)
 
+Mapping using UUV simulation - static:
+https://www.youtube.com/watch?v=EbcKPaRj7o8
 
 
 ## Related Packages
