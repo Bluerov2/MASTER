@@ -17,15 +17,23 @@ The aim of this project is to provide a start of a 3D SLAM for underwater ROV. T
 
 Mapping using UUV simulation - static:
 
+<p align="center">
 <a href="https://www.youtube.com/watch?v=EbcKPaRj7o8
 " target="_blank"><img src="https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/1.PNG" width="400" /></a>
-
+</p>
 
 Mapping using UUV simulation - dynamic:
-https://youtu.be/tYeeyqMWG_0
+
+<p align="center">
+<a href="https://youtu.be/tYeeyqMWG_0
+" target="_blank"><img src="https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/2.PNG" width="400" /></a>
+</p>
 
 Mapping using Micron Sonar in a water tank:
-https://youtu.be/Wra3umj1Cps
+<p align="center">
+<a href="https://youtu.be/Wra3umj1Cps
+" target="_blank"><img src="https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/3.PNG" width="400" /></a>
+</p>
 
 
 
