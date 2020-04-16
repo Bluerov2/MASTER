@@ -8,7 +8,7 @@
 The aim of this project is to provide a start of a 3D SLAM for underwater ROV. This project uses UUV simulation to fufill this objectif. The model is simulated using Deskitek Saga but you can use your own model as well. We modified the sonar to be se same as the [Micron Sonar](https://www.tritech.co.uk/product/small-rov-mechanical-sector-scanning-sonar-tritech-micron) from Tritech.
 
 <p align="center">
-![bluerov2](https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/BlueROV2-4-lumen-1-300x300.png)
+ <img src="https://github.com/Bluerov2/MASTER/blob/sonar_mapping/images/BlueROV2-4-lumen-1-300x300.png " width="400" >
 </p>
 
 
