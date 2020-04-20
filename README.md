@@ -176,5 +176,5 @@ $ roslaunch sonar_mapping bag.launch
 - [x] UUV simulation senario
 - [x] IMU & DLV fused (/odom)
 - [x] 3D Mapping (octomap)
-- [x] 2D SLAM using Particle Filter
+- [ ] 2D SLAM using Particle Filter
 - [ ] 3D SLAM using Particle Filter
